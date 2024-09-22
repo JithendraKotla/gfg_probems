@@ -12,14 +12,13 @@ class Solution:
         # Code here
         # return the value stored in the middle node
         arr=[]
-        cur=head
-        while cur:
-            arr.append(cur.data)
-            cur=cur.next
-        n=len(arr)
-        i=n//2
-       
+        temp=head
+        while temp:
+            arr.append(temp.data)
+            temp=temp.next
+        i=len(arr)//2
         return arr[i]
+                
 
 
 
