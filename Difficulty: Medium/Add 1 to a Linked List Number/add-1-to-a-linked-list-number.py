@@ -12,22 +12,20 @@ class Solution:
     def addOne(self,head):
         #Returns new head of linked List.
         s=""
-        temp=head
-        while(temp):
-            s+=str(temp.data)
-            temp=temp.next
+        cur=head
+        while cur:
+            s+=str(cur.data)
+            cur=cur.next
         s=int(s)
         s+=1
-        st=str(s)
-        n_s=[int(i) for i in st]
+        s_c=str(s)
         dummy=Node(0)
         cur=dummy
-        for i in  n_s:
+        arr=[int(i) for i in s_c]
+        for i in arr:
             cur.next=Node(i)
             cur=cur.next
         return dummy.next
-            
-            
 
 
 #{ 
