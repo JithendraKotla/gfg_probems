@@ -1,34 +1,27 @@
-# User function Template for python3
+#User function Template for python3
 class Solution:
-    # Recursive helper function
-    def countSubsets(self, i, currentSum, target, arr, memo):
-        n = len(arr)
-    
-        # Base case: If we've processed all elements
-        if i == n:
-            return 1 if currentSum == target else 0
-    
-        # Check if result is already computed
-        if memo[i][currentSum] != -1:
-            return memo[i][currentSum]
-    
-        # Case 1: Exclude the current element
-        exclude = self.countSubsets(i + 1, currentSum, target, arr, memo)
-    
-        # Case 2: Include the current element
-        include = 0
-        if currentSum + arr[i] <= target:
-            include = self.countSubsets(i + 1, currentSum + arr[i], target, arr, memo)
-    
-        # Store result in memoization table and return it
-        memo[i][currentSum] = include + exclude
-        return memo[i][currentSum]
-    
-    # Main function
-    def perfectSum(self, arr, target):
-        n = len(arr)
-        
-        # Initialize a 2D memoization table with -1
-        memo = [[-1 for _ in range(target + 1)] for _ in range(n + 1)]
-    
-        return self.countSubsets(0, 0, target, arr, memo)
+	def perfectSum(self, arr, target):
+		# code here
+		n=len(arr)
+		def f(ind,target):
+		    if ind == 0:
+                if target == 0 and arr[0] == 0:
+                    return 2
+                if target == 0 or arr[0] == target:
+                    return 1
+                return 0
+		    if dp[ind][target]!=-1:
+		        return dp[ind][target]
+		    take =0
+		    if arr[ind]<=target:
+		        take = f(ind-1,target- arr[ind])
+		    
+		    nottake = f(ind-1,target)
+		    
+		    dp[ind][target]= take + nottake
+		    
+		    return dp[ind][target]
+	    
+	    dp=[[-1 for _ in range(target+1)] for _ in range(n)]
+	    
+	    return f(n-1,target)
